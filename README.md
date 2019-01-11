@@ -1,14 +1,13 @@
 # "Counting" with Machine Learning
-<details>
-<p>
 
 This repository contains the most relevant code and documentation for work related to the development of a computational model that can solve basic mathematical tasks; in particular at this stage: to capture fundamental mathematical capabilities such as the *'understanding' of natural numbers* and *counting*. 
+
 (Notice that this repository is kept private for now)
 
-</p>
-</details>
 
-## Introduction
+
+<details>
+<summary><h1> Introduction  </h1> </summary>
 In several meetings, talks and discussions we have discussed different aspects of *counting* extensively already, so here are just some keypoints to keep in mind for the development of a comp. model with the ability to count. 
 
 Counting is the act of determining the number of objects in question. What is the number of objects? One possible answer is to define it by the constraint: Two sets of objects have the same *number* of elements if they have the same cardinality, which means there exists a one-to-one correspondence between the elements.
@@ -36,30 +35,36 @@ Other properties of numbers that should be captured by the comp. model are the f
 - Invariance under spatial transformations of the objects
 
 
-## Computational Models
+</details>
+
+
+
+<details>
+<summary><h1> Computational Models </h1> </summary>
+
 The above sketched aspects of counting and the understanding of numbers should be captured by computational models in this project.
 
 ### Subitizing
-Motivated by the ability of humans to subitize small numbers of objects, the code in ... was developed, which is able to determine the number of randomly distributed squares with varying size by a one-shot approach where the picture of the squares is passed through a  feed-forward CNN.
+Motivated by the ability of humans to subitize small numbers of objects, the code in [subitizing.py](https://gitlab.com/ssabathiel/ml_counting/blob/master/subitizing.py) was developed, which is able to determine the number of randomly distributed squares with varying size by a one-shot approach where the picture of the squares is passed through a  feed-forward CNN.
 
 <img src="Pics/squares.png"  width="400">
 
 <img src="Pics/sub_result.png"  width="200">
 
 ### Picking Objects (Binaries)
-Point 2. of the above required steps to algorithmicly count - to decide which objects to pick one by one, has been modeled in a very basic setup of 1-D binary arrays in ... . Therefore the principle of Reinforcement learning with the method of Q-learning has been used. At each time step the whole binary array is given to the agent, whose goal it is to pick every 1 exactly once and without pickin any non-objects (zeros). Picking a binary at a certain position corresponds to an action in the action space. Thus the action space increases with the dimension of the input (not desired for more general setups).
+Point 2. of the above required steps to algorithmicly count - to decide which objects to pick one by one, has been modeled in a very basic setup of 1-D binary arrays in [RL_pick_1s.ipynb](https://gitlab.com/ssabathiel/ml_counting/blob/master/RL_pick_1s.ipynb) . Therefore the principle of Reinforcement learning with the method of Q-learning has been used. At each time step the whole binary array is given to the agent, whose goal it is to pick every 1 exactly once and without pickin any non-objects (zeros). Picking a binary at a certain position corresponds to an action in the action space. Thus the action space increases with the dimension of the input (not desired for more general setups).
 <img src="Pics/pick1s.png"  width="200">
 <img src="Pics/pick1s_result.png"  width="250">
 
 ### Counting with sequence
-To extend the idea of counting from just picking certain objects, the model in ... is capable of synchronizing each pick with a counting status. This requires an internal memory of the system (to know at which counter one is) and is resolved by using a RNN. In contrast to the picking example above, here the agent does not have the full binary array in sight at each time step, but strides from left to right and has one binary as observation at each time step. Each number is represented by an output node of the RNN.
+To extend the idea of counting from just picking certain objects, the model in [RNN_Counting.ipynb](https://gitlab.com/ssabathiel/ml_counting/blob/master/RNN_Counting.ipynb) is capable of synchronizing each pick with a counting status. This requires an internal memory of the system (to know at which counter one is) and is resolved by using a RNN. In contrast to the picking example above, here the agent does not have the full binary array in sight at each time step, but strides from left to right and has one binary as observation at each time step. Each number is represented by an output node of the RNN.
 
 <img src="Pics/sequ1.png"  width="350">
 
 <img src="Pics/sequ2.png"  width="350">
 
 ### A^n B^n 
-The code in ... reproduces the model and results from the paper ... . Here the agent (non-RL) is exposed to a sequence of n 'A's followed by n 'B's (in my case 'A'->1,'B'->0). At each time step only one character is shown to the system. The goal of the agent is predict the next character at each time step. For the 'A's this is not possible, since the model cannot know how many 'A's there are going to be, but since there are as many 'Bs' as 'As' (which it has seen), it can in principle the number of 'Bs' before terminating.
+The code in [AnBn.ipynb](https://gitlab.com/ssabathiel/ml_counting/blob/master/AnBn.ipynb)  reproduces the model and results from the paper [Learning_to_count_wo_counter](https://pdfs.semanticscholar.org/60d1/5a73c5e62caeb8b6b86f9e75c86ea81cbff3.pdf?_ga=2.55709544.2147280421.1547224703-1560358086.1545147070). Here the agent (non-RL) is exposed to a sequence of n 'A's followed by n 'B's (in my case 'A'->1,'B'->0). At each time step only one character is shown to the system. The goal of the agent is predict the next character at each time step. For the 'A's this is not possible, since the model cannot know how many 'A's there are going to be, but since there are as many 'Bs' as 'As' (which it has seen), it can in principle the number of 'Bs' before terminating.
 <img src="Pics/AnBn.png"  width="350">
 
 
@@ -74,13 +79,16 @@ In prospect for a publication of the work, a succsessful model of this kind woul
 - It is in line with current trends of machine learning to process both, static and dynamic input sequentially instead of all in one 'shot': For static input, such as object recognition in images, with attention shifting and for dynamic input (e.g. videos) by taking only the current image as input, but having information about the past images without saving and stacking them together.
 - It is a  step towards the agent in human-like environment (limited visual field, internal memory...)
  
+This model is in progress right now: [RL_RNN_moving_picking_counting.ipynb](https://gitlab.com/ssabathiel/ml_counting/blob/master/RL_RNN_moving_picking_counting.ipynb)
+
+
 <img src="Pics/RL_RNN.png"  width="350">
 
 <img src="Pics/RL_RNN_2D_1.png"  width="350"> <img src="Pics/RL_RNN_2D_2.png"  width="350">
 
-This model is in progress right now.
 
 
+</details>
 
 
 
