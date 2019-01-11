@@ -53,6 +53,7 @@ Motivated by the ability of humans to subitize small numbers of objects, the cod
 
 ### Picking Objects (Binaries)
 Point 2. of the above required steps to algorithmicly count - to decide which objects to pick one by one, has been modeled in a very basic setup of 1-D binary arrays in [RL_pick_1s.ipynb](https://gitlab.com/ssabathiel/ml_counting/blob/master/RL_pick_1s.ipynb) . Therefore the principle of Reinforcement learning with the method of Q-learning has been used. At each time step the whole binary array is given to the agent, whose goal it is to pick every 1 exactly once and without pickin any non-objects (zeros). Picking a binary at a certain position corresponds to an action in the action space. Thus the action space increases with the dimension of the input (not desired for more general setups).
+
 <img src="Pics/pick1s.png"  width="200">
 <img src="Pics/pick1s_result.png"  width="250">
 
@@ -65,7 +66,7 @@ To extend the idea of counting from just picking certain objects, the model in [
 
 ### A^n B^n 
 The code in [AnBn.ipynb](https://gitlab.com/ssabathiel/ml_counting/blob/master/AnBn.ipynb)  reproduces the model and results from the paper [Learning_to_count_wo_counter](https://pdfs.semanticscholar.org/60d1/5a73c5e62caeb8b6b86f9e75c86ea81cbff3.pdf?_ga=2.55709544.2147280421.1547224703-1560358086.1545147070). Here the agent (non-RL) is exposed to a sequence of n 'A's followed by n 'B's (in my case 'A'->1,'B'->0). At each time step only one character is shown to the system. The goal of the agent is predict the next character at each time step. For the 'A's this is not possible, since the model cannot know how many 'A's there are going to be, but since there are as many 'Bs' as 'As' (which it has seen), it can in principle predict the number of 'Bs' before terminating.
-<img src="Pics/AnBn.png"  width="350">
+<img src="Pics/AnBn.png"  width="400">
 
 
 ### RL with RNN and limited field of view
