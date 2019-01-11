@@ -2,7 +2,7 @@
 
 This repository contains the most relevant code and documentation for work related to the development of a computational model that can solve basic mathematical tasks; in particular at this stage: to capture fundamental mathematical capabilities such as the *'understanding' of natural numbers* and *counting*. 
 
-(Notice that this repository is kept private for now)
+(Notice: the chapters below can be unfolded)
 
 
 
@@ -64,7 +64,7 @@ To extend the idea of counting from just picking certain objects, the model in [
 <img src="Pics/sequ2.png"  width="350">
 
 ### A^n B^n 
-The code in [AnBn.ipynb](https://gitlab.com/ssabathiel/ml_counting/blob/master/AnBn.ipynb)  reproduces the model and results from the paper [Learning_to_count_wo_counter](https://pdfs.semanticscholar.org/60d1/5a73c5e62caeb8b6b86f9e75c86ea81cbff3.pdf?_ga=2.55709544.2147280421.1547224703-1560358086.1545147070). Here the agent (non-RL) is exposed to a sequence of n 'A's followed by n 'B's (in my case 'A'->1,'B'->0). At each time step only one character is shown to the system. The goal of the agent is predict the next character at each time step. For the 'A's this is not possible, since the model cannot know how many 'A's there are going to be, but since there are as many 'Bs' as 'As' (which it has seen), it can in principle the number of 'Bs' before terminating.
+The code in [AnBn.ipynb](https://gitlab.com/ssabathiel/ml_counting/blob/master/AnBn.ipynb)  reproduces the model and results from the paper [Learning_to_count_wo_counter](https://pdfs.semanticscholar.org/60d1/5a73c5e62caeb8b6b86f9e75c86ea81cbff3.pdf?_ga=2.55709544.2147280421.1547224703-1560358086.1545147070). Here the agent (non-RL) is exposed to a sequence of n 'A's followed by n 'B's (in my case 'A'->1,'B'->0). At each time step only one character is shown to the system. The goal of the agent is predict the next character at each time step. For the 'A's this is not possible, since the model cannot know how many 'A's there are going to be, but since there are as many 'Bs' as 'As' (which it has seen), it can in principle predict the number of 'Bs' before terminating.
 <img src="Pics/AnBn.png"  width="350">
 
 
@@ -81,9 +81,10 @@ In prospect for a publication of the work, a succsessful model of this kind woul
  
 This model is in progress right now: [RL_RNN_moving_picking_counting.ipynb](https://gitlab.com/ssabathiel/ml_counting/blob/master/RL_RNN_moving_picking_counting.ipynb)
 
-
+#### 1D scatch of the model and its environment
 <img src="Pics/RL_RNN.png"  width="350">
 
+#### Possible 2D extension, size of visual field might also be adaptable by the agent
 <img src="Pics/RL_RNN_2D_1.png"  width="350"> <img src="Pics/RL_RNN_2D_2.png"  width="350">
 
 
