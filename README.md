@@ -37,16 +37,21 @@ The above sketched aspects of counting and the understanding of numbers should b
 ### Subitizing
 Motivated by the ability of humans to subitize small numbers of objects, the code in ... was developed, which is able to determine the number of randomly distributed squares with varying size by a one-shot approach where the picture of the squares is passed through a  feed-forward CNN.
 
-<img src="Pics/subitizing.png"  width="200">
+<img src="Pics/squares.png"  width="400">
 
 <img src="Pics/sub_result.png"  width="200">
 
 ### Picking Objects (Binaries)
 Point 2. of the above required steps to algorithmicly count - to decide which objects to pick one by one, has been modeled in a very basic setup of 1-D binary arrays in ... . Therefore the principle of Reinforcement learning with the method of Q-learning has been used. At each time step the whole binary array is given to the agent, whose goal it is to pick every 1 exactly once and without pickin any non-objects (zeros). Picking a binary at a certain position corresponds to an action in the action space. Thus the action space increases with the dimension of the input (not desired for more general setups).
-
+<img src="Pics/pick1s.png"  width="200">
+<img src="Pics/pick1s_result.png"  width="250">
 
 ### Counting with sequence
 To extend the idea of counting from just picking certain objects, the model in ... is capable of synchronizing each pick with a counting status. This requires an internal memory of the system (to know at which counter one is) and is resolved by using a RNN. In contrast to the picking example above, here the agent does not have the full binary array in sight at each time step, but strides from left to right and has one binary as observation at each time step. Each number is represented by an output node of the RNN.
+
+<img src="Pics/sequ1.png"  width="350">
+
+<img src="Pics/sequ2.png"  width="350">
 
 ### A^n B^n 
 The code in ... reproduces the model and results from the paper ... . Here the agent (non-RL) is exposed to a sequence of n 'A's followed by n 'B's (in my case 'A'->1,'B'->0). At each time step only one character is shown to the system. The goal of the agent is predict the next character at each time step. For the 'A's this is not possible, since the model cannot know how many 'A's there are going to be, but since there are as many 'Bs' as 'As' (which it has seen), it can in principle the number of 'Bs' before terminating.
@@ -62,6 +67,9 @@ In prospect for a publication of the work, a succsessful model of this kind woul
 - It is in line with current trends of machine learning to process both, static and dynamic input sequentially instead of all in one 'shot': For static input, such as object recognition in images, with attention shifting and for dynamic input (e.g. videos) by taking only the current image as input, but having information about the past images without saving and stacking them together.
 - It is a  step towards the agent in human-like environment (limited visual field, internal memory...)
  
+<img src="Pics/RL_RNN.png"  width="350">
+
+<img src="Pics/RL_RNN_2D_1.png"  width="350"> <img src="Pics/RL_RNN_2D_2.png"  width="350">
 
 This model is in progress right now.
 
