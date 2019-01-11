@@ -1,7 +1,12 @@
 # "Counting" with Machine Learning
+<details>
+<p>
 
 This repository contains the most relevant code and documentation for work related to the development of a computational model that can solve basic mathematical tasks; in particular at this stage: to capture fundamental mathematical capabilities such as the *'understanding' of natural numbers* and *counting*. 
 (Notice that this repository is kept private for now)
+
+</p>
+</details>
 
 ## Introduction
 In several meetings, talks and discussions we have discussed different aspects of *counting* extensively already, so here are just some keypoints to keep in mind for the development of a comp. model with the ability to count. 
@@ -55,6 +60,8 @@ To extend the idea of counting from just picking certain objects, the model in .
 
 ### A^n B^n 
 The code in ... reproduces the model and results from the paper ... . Here the agent (non-RL) is exposed to a sequence of n 'A's followed by n 'B's (in my case 'A'->1,'B'->0). At each time step only one character is shown to the system. The goal of the agent is predict the next character at each time step. For the 'A's this is not possible, since the model cannot know how many 'A's there are going to be, but since there are as many 'Bs' as 'As' (which it has seen), it can in principle the number of 'Bs' before terminating.
+<img src="Pics/AnBn.png"  width="350">
+
 
 ### RL with RNN and limited field of view
 This model should combine many of the above stated and implemented aspects of counting. It is the main project now and should be the basis for an agent in a more human-like environment. 
