@@ -95,7 +95,19 @@ This model is in progress right now: [RL_RNN_moving_picking_counting.ipynb](http
 
 
 
+<details>
+<summary><h1> Google Colab  </h1> </summary>
+Personally I use the service of 'Google Colab' to run the code, which I can highly recommend for performance reason. 
+It offers to use the GPUs from Google remotely via their Jupyter notebook environment. Using the GPUs the training of NNs can run
+about 30 times faster, which can boost the developing process vastly. Just recently they further added the option to use their TPUs (Tensor Processing Units), which
+accelerates the performance by another factor of 10, as far as I experienced it.
 
+The use of it is as simple as it could be:
+If you are signed in your google account go to [Google Colab](https://colab.research.google.com), insert your code or open an existing notebook and you can run it immediately.
+You can change the processor used for your code by entering 'Runtime'-'Change Runtime type' and choose either CPU, GPU or TPU. 
+One drawback however is, that google has access to any files one puts on google drive (that's where the files from Colab are stored). So we might consider this at any stage of the project.
+
+</details>
 
 
 
