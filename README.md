@@ -2,7 +2,7 @@
 
 This repository contains the most relevant code and documentation for work related to the development of a computational model that can solve basic mathematical tasks; in particular at this stage: to capture fundamental mathematical capabilities such as the *'understanding' of natural numbers* and *counting*. 
 
-(Notice that this repository is kept private for now)
+(Notice: the chapters below can be unfolded)
 
 
 
@@ -53,6 +53,7 @@ Motivated by the ability of humans to subitize small numbers of objects, the cod
 
 ### Picking Objects (Binaries)
 Point 2. of the above required steps to algorithmicly count - to decide which objects to pick one by one, has been modeled in a very basic setup of 1-D binary arrays in [RL_pick_1s.ipynb](https://gitlab.com/ssabathiel/ml_counting/blob/master/RL_pick_1s.ipynb) . Therefore the principle of Reinforcement learning with the method of Q-learning has been used. At each time step the whole binary array is given to the agent, whose goal it is to pick every 1 exactly once and without pickin any non-objects (zeros). Picking a binary at a certain position corresponds to an action in the action space. Thus the action space increases with the dimension of the input (not desired for more general setups).
+
 <img src="Pics/pick1s.png"  width="200">
 <img src="Pics/pick1s_result.png"  width="250">
 
@@ -64,8 +65,8 @@ To extend the idea of counting from just picking certain objects, the model in [
 <img src="Pics/sequ2.png"  width="350">
 
 ### A^n B^n 
-The code in [AnBn.ipynb](https://gitlab.com/ssabathiel/ml_counting/blob/master/AnBn.ipynb)  reproduces the model and results from the paper [Learning_to_count_wo_counter](https://pdfs.semanticscholar.org/60d1/5a73c5e62caeb8b6b86f9e75c86ea81cbff3.pdf?_ga=2.55709544.2147280421.1547224703-1560358086.1545147070). Here the agent (non-RL) is exposed to a sequence of n 'A's followed by n 'B's (in my case 'A'->1,'B'->0). At each time step only one character is shown to the system. The goal of the agent is predict the next character at each time step. For the 'A's this is not possible, since the model cannot know how many 'A's there are going to be, but since there are as many 'Bs' as 'As' (which it has seen), it can in principle the number of 'Bs' before terminating.
-<img src="Pics/AnBn.png"  width="350">
+The code in [AnBn.ipynb](https://gitlab.com/ssabathiel/ml_counting/blob/master/AnBn.ipynb)  reproduces the model and results from the paper [Learning_to_count_wo_counter](https://pdfs.semanticscholar.org/60d1/5a73c5e62caeb8b6b86f9e75c86ea81cbff3.pdf?_ga=2.55709544.2147280421.1547224703-1560358086.1545147070). Here the agent (non-RL) is exposed to a sequence of n 'A's followed by n 'B's (in my case 'A'->1,'B'->0). At each time step only one character is shown to the system. The goal of the agent is predict the next character at each time step. For the 'A's this is not possible, since the model cannot know how many 'A's there are going to be, but since there are as many 'Bs' as 'As' (which it has seen), it can in principle predict the number of 'Bs' before terminating.
+<img src="Pics/AnBn.png"  width="400">
 
 
 ### RL with RNN and limited field of view
@@ -81,9 +82,10 @@ In prospect for a publication of the work, a succsessful model of this kind woul
  
 This model is in progress right now: [RL_RNN_moving_picking_counting.ipynb](https://gitlab.com/ssabathiel/ml_counting/blob/master/RL_RNN_moving_picking_counting.ipynb)
 
-
+#### 1D scatch of the model and its environment
 <img src="Pics/RL_RNN.png"  width="350">
 
+#### Possible 2D extension, size of visual field might also be adaptable by the agent
 <img src="Pics/RL_RNN_2D_1.png"  width="350"> <img src="Pics/RL_RNN_2D_2.png"  width="350">
 
 
@@ -93,7 +95,19 @@ This model is in progress right now: [RL_RNN_moving_picking_counting.ipynb](http
 
 
 
+<details>
+<summary><h1> Google Colab  </h1> </summary>
+Personally I use the service of 'Google Colab' to run the code, which I can highly recommend for performance reason. 
+It offers to use the GPUs from Google remotely via their Jupyter notebook environment. Using the GPUs the training of NNs can run
+about 30 times faster, which can boost the developing process vastly. Just recently they further added the option to use their TPUs (Tensor Processing Units), which
+accelerates the performance by another factor of 10, as far as I experienced it.
 
+The use of it is as simple as it could be:
+If you are signed in your google account go to [Google Colab](https://colab.research.google.com), insert your code or open an existing notebook and you can run it immediately.
+You can change the processor used for your code by entering 'Runtime'-'Change Runtime type' and choose either CPU, GPU or TPU. 
+One drawback however is, that google has access to any files one puts on google drive (that's where the files from Colab are stored). So we might consider this at any stage of the project.
+
+</details>
 
 
 
