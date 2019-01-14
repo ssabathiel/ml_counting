@@ -107,6 +107,9 @@ If you are signed in your google account go to [Google Colab](https://colab.rese
 You can change the processor used for your code by entering 'Runtime'-'Change Runtime type' and choose either CPU, GPU or TPU. 
 One drawback however is, that google has access to any files one puts on google drive (that's where the files from Colab are stored). So we might consider this at any stage of the project.
 
+<img src="Pics/colab.png"  width="800">
+
+
 </details>
 
 
